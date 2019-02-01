@@ -16,6 +16,8 @@ class ITLoginViewController: UIViewController {
     
     fileprivate weak var signInButton: UIButton!
     
+    fileprivate weak var logoutButton: UIButton!
+
     // MARK: - Lifecycle
     
     // Custom initializers go here
@@ -46,9 +48,13 @@ class ITLoginViewController: UIViewController {
         GIDSignIn.sharedInstance().signIn()
     }
     
-    // function which is triggered when handleTap is called
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
+    @objc fileprivate func logoutButton(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     // MARK: - Public methods
@@ -66,11 +72,6 @@ class ITLoginViewController: UIViewController {
     fileprivate func setupViews() {
         view.backgroundColor = UIColor.white
         
-        let tap = UITapGestureRecognizer(target: self,
-                                         action: #selector(self.handleTap(_:)))
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
-        
         let signInButton = UIButton()
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
@@ -81,10 +82,21 @@ class ITLoginViewController: UIViewController {
         signInButton.layer.cornerRadius = 20.0
         signInButton.layer.masksToBounds = true
         
-        view.addSubview(signInButton)
+        let logoutButton = UIButton()
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+        logoutButton.setTitle(NSLocalizedString("logout", comment: ""), for: .normal)
+        logoutButton.setTitleColor(UIColor.white, for: .normal)
+        logoutButton.setTitleColor(UIColor.gray, for: .highlighted)
+        logoutButton.addTarget(self, action: #selector(logoutButton(_ :)), for: .touchUpInside)
+        logoutButton.layer.cornerRadius = 20.0
+        logoutButton.layer.masksToBounds = true
         
+        view.addSubview(signInButton)
+        view.addSubview(logoutButton)
+
         self.signInButton = signInButton
-       
+       self.logoutButton = logoutButton
         setupConstraints()
     }
     
@@ -93,6 +105,11 @@ class ITLoginViewController: UIViewController {
         signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         signInButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        
+        logoutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20.0).isActive = true
+        logoutButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+        logoutButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
     }
 }
 
