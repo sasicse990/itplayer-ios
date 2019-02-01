@@ -12,6 +12,8 @@
 		8428B1D92203EEC600A253FF /* ITPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1D72203EEC600A253FF /* ITPlayer.xcdatamodeld */; };
 		8428B1DB2203EED700A253FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8428B1DA2203EED700A253FF /* Assets.xcassets */; };
 		8428B1DE2203EED700A253FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8428B1DC2203EED700A253FF /* LaunchScreen.storyboard */; };
+		8428B1EB2203FD7C00A253FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8428B1EA2203FD7C00A253FF /* GoogleService-Info.plist */; };
+		8428B1ED2204055700A253FF /* ITHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1EC2204055700A253FF /* ITHomeViewController.swift */; };
 		9075AAE97533FA04D1B34015 /* Pods_ITPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F2091B4276103172A42B87 /* Pods_ITPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		8428B1DA2203EED700A253FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8428B1DD2203EED700A253FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8428B1DF2203EED800A253FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8428B1EA2203FD7C00A253FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8428B1EC2204055700A253FF /* ITHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITHomeViewController.swift; sourceTree = "<group>"; };
 		9E7D603BD4FB0F31AF7FDB3F /* Pods-ITPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITPlayer/Pods-ITPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +78,7 @@
 				8428B1E52203F2D600A253FF /* AppDelegate */,
 				8428B1E82203F31100A253FF /* SupportingFiles */,
 				8428B1DF2203EED800A253FF /* Info.plist */,
+				8428B1EA2203FD7C00A253FF /* GoogleService-Info.plist */,
 			);
 			path = ITPlayer;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 		8428B1E62203F2E800A253FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8428B1EE2204055A00A253FF /* Home */,
 				8428B1E72203F2FD00A253FF /* Login */,
 			);
 			path = Controller;
@@ -119,6 +125,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8428B1EE2204055A00A253FF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8428B1EC2204055700A253FF /* ITHomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		D8A6628AFA747EE7758E309C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +154,7 @@
 				8428B1CA2203EEC600A253FF /* Frameworks */,
 				8428B1CB2203EEC600A253FF /* Resources */,
 				D72B6EF016BEBE7EEC30B7A2 /* [CP] Embed Pods Frameworks */,
+				704D6CECD1D94C73724A8801 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,6 +205,7 @@
 			files = (
 				8428B1DE2203EED700A253FF /* LaunchScreen.storyboard in Resources */,
 				8428B1DB2203EED700A253FF /* Assets.xcassets in Resources */,
+				8428B1EB2203FD7C00A253FF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +230,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		704D6CECD1D94C73724A8801 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ITPlayer/Pods-ITPlayer-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ITPlayer/Pods-ITPlayer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D72B6EF016BEBE7EEC30B7A2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,10 +255,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ITPlayer/Pods-ITPlayer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +283,7 @@
 			files = (
 				8428B1D92203EEC600A253FF /* ITPlayer.xcdatamodeld in Sources */,
 				8428B1D32203EEC600A253FF /* ITLoginViewController.swift in Sources */,
+				8428B1ED2204055700A253FF /* ITHomeViewController.swift in Sources */,
 				8428B1D12203EEC600A253FF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

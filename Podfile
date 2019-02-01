@@ -9,6 +9,11 @@ platform :ios, '11.0'
 
     pod 'IQKeyboardManagerSwift'
 
+    pod 'Alamofire', '~> 4.7'
+
+    pod 'Firebase/Auth'
+    
+    pod 'GoogleSignIn'
 end
 
 target 'ITPlayer' do
