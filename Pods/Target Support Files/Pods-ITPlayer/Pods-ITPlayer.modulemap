@@ -1,0 +1,6 @@
+framework module Pods_ITPlayer {
+  umbrella header "Pods-ITPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}
