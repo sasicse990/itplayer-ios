@@ -34,7 +34,7 @@ class ITHomeViewController: UIViewController {
         fetchData {
             DispatchQueue.main.async {
                 self.activityView.stopAnimating()
-
+                
                 self.videoListTableView.reloadData()
             }
         }
@@ -79,6 +79,17 @@ class ITHomeViewController: UIViewController {
                     let str = try JSONSerialization.jsonObject(with: unwrappedData, options: .allowFragments)
                     self.tableViewDataArray = str as! [Dictionary<String, Any>]
                     print(str)
+                    if self.tableViewDataArray.count > 0 {
+                        for item in self.tableViewDataArray {
+                            if let aId = item["id"] as? String {
+                                let video = ITVideos.fetchRequest(for: Int64(aId) ?? 0)
+                                
+                                video.populateWithDetails(representation: item)
+                                
+                                CoreDataStack.shared.saveContexts()
+                            }
+                        }
+                    }
                     if let handler = compltionHandler {
                         handler()
                     }

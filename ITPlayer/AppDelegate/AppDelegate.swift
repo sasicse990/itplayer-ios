@@ -23,6 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         return UIApplication.shared.delegate as? AppDelegate
     }
 
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        guard let modelURL = Bundle.main.url(forResource: "ITPlayer", withExtension: "momd") else {
+            fatalError("failed to locate core data bundle")
+        }
+        let coreDataConfiguration = CoreDataStackConfiguration(modelURL: modelURL)
+        
+        CoreDataStack.shared(with: coreDataConfiguration)
+        
+        let directory: URL? = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last
+        
+        print("----****----\(directory?.path ?? "")")
+        
+        return true
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

@@ -115,12 +115,48 @@ extension ITHomeDetailViewController: UITableViewDelegate, UITableViewDataSource
         if let videoUrl = dict["url"] as? String {
         let videoURL = URL(string: videoUrl)
         let player = AVPlayer(url: videoURL!)
-        let playerViewController = AVPlayerViewController()
+        let playerViewController = ITPlayerViewController()
         playerViewController.player = player
+        playerViewController.delegate = self
         self.present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
         }
+    }
+}
+
+extension ITHomeDetailViewController: AVPlayerViewControllerDelegate {
+    
+    func playerViewControllerWillStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
+        
+    }
+    
+    func playerViewControllerDidStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
+        
+    }
+    
+    func playerViewController(_ playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: Error) {
+        
+    }
+    
+    func playerViewControllerWillStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
+        
+    }
+    
+    func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
+        
+    }
+    
+    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(_ playerViewController: AVPlayerViewController) -> Bool {
+        return true
+    }
+    
+    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        
+    }
+    
+    func playerViewControllerDidEndDismissalTransition(_ playerViewController: AVPlayerViewController) {
+        print("dismissed")
     }
 }
 
