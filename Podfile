@@ -14,6 +14,9 @@ platform :ios, '11.0'
     pod 'Firebase/Auth'
     
     pod 'GoogleSignIn'
+    
+    pod 'SDWebImage'
+
 end
 
 target 'ITPlayer' do

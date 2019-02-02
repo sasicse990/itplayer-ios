@@ -145,5 +145,16 @@ extension ITHomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let dict = tableViewDataArray[indexPath.row]
+        
+        let array = tableViewDataArray.filter { (representation) -> Bool in
+            return representation["id"] as? String? != dict["id"] as? String
+        }
+        
+        let homeDetailVC = ITHomeDetailViewController()
+        
+        homeDetailVC.tableViewDataArray = array
+        
+        navigationController?.pushViewController(homeDetailVC, animated: true)
     }
 }
