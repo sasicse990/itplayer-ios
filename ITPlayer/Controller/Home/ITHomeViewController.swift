@@ -158,8 +158,12 @@ extension ITHomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let dict = tableViewDataArray[indexPath.row]
         
-        let array = tableViewDataArray.filter { (representation) -> Bool in
-            return representation["id"] as? String? != dict["id"] as? String
+        let videoList = ITVideos.fetchVideoList()
+        
+        if let videoID = dict["id"] as? String {
+    
+        let array = videoList.filter { (representation) -> Bool in
+            return representation.id != Int64(videoID)
         }
         
         let homeDetailVC = ITHomeDetailViewController()
@@ -167,5 +171,6 @@ extension ITHomeViewController: UITableViewDelegate, UITableViewDataSource {
         homeDetailVC.tableViewDataArray = array
         
         navigationController?.pushViewController(homeDetailVC, animated: true)
+        }
     }
 }

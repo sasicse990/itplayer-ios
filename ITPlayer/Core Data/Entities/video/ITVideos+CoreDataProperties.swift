@@ -22,5 +22,6 @@ extension ITVideos {
     @NSManaged public var title: String?
     @NSManaged public var videoDescription: String?
     @NSManaged public var videoUrl: String?
+    @NSManaged public var thumb: String?
 
 }

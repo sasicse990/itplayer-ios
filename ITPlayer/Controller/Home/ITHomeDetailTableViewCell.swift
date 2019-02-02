@@ -19,14 +19,14 @@ class ITHomeDetailTableViewCell: UITableViewCell {
     
     fileprivate var hasSetupConstraints: Bool = false
     
-    var videoList: Dictionary<String, Any?>? {
+    var videoList: ITVideos? {
         
         didSet {
-            if let image = videoList!["thumb"] as? String {
+            if let image = videoList?.thumb {
                 videoImageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: ""))
             }
 
-            titleLable.text = videoList!["description"] as? String
+            titleLable.text = videoList?.videoDescription
         }
     }
     

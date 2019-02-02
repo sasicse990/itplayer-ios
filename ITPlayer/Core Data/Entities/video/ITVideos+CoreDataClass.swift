@@ -64,5 +64,9 @@ public class ITVideos: NSManagedObject {
         if let aUrl = representation["url"] as? String {
             self.videoUrl = aUrl
         }
+        
+        if let aUrl = representation["thumb"] as? String {
+            self.thumb = aUrl
+        }
     }
 }

@@ -18,7 +18,7 @@ class ITHomeDetailViewController: UIViewController {
     
     fileprivate weak var activityView: UIActivityIndicatorView!
     
-    var tableViewDataArray = [Dictionary<String, Any>]()
+    var tableViewDataArray = [ITVideos]()
     
     // MARK: - Lifecycle
     
@@ -112,7 +112,7 @@ extension ITHomeDetailViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let dict = tableViewDataArray[indexPath.row]
-        if let videoUrl = dict["url"] as? String {
+        if let videoUrl = dict.videoUrl {
         let videoURL = URL(string: videoUrl)
         let player = AVPlayer(url: videoURL!)
         let playerViewController = ITPlayerViewController()
