@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ITPlayer/Controller/Home/ITHomeDetailViewController.swift"
-            timestampString = "570799369.465081"
+            timestampString = "570800181.989452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "playerViewControllerDidEndDismissalTransition(_:)"
             landmarkType = "7">
          </BreakpointContent>

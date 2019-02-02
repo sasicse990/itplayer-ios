@@ -111,17 +111,26 @@ extension ITHomeDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let dict = tableViewDataArray[indexPath.row]
-        if let videoUrl = dict.videoUrl {
-        let videoURL = URL(string: videoUrl)
-        let player = AVPlayer(url: videoURL!)
+       // let dict = tableViewDataArray[indexPath.row]
+        
+        var queue: [AVPlayerItem] = []
+        
+        for item in tableViewDataArray {
+            if let videoUrl = item.videoUrl {
+                queue.append(AVPlayerItem(url: URL(string: videoUrl)!))
+            }
+        }
+
+        //if let videoUrl = dict.videoUrl {
+        //let videoURL = URL(string: videoUrl)
+        let player = AVQueuePlayer(items: queue)
         let playerViewController = ITPlayerViewController()
         playerViewController.player = player
         playerViewController.delegate = self
         self.present(playerViewController, animated: true) {
             playerViewController.player!.play()
         }
-        }
+       // }
     }
 }
 
