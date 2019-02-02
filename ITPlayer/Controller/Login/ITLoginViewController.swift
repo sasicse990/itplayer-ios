@@ -31,19 +31,20 @@ class ITLoginViewController: UIViewController {
         
         setupViews()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     // MARK: - User Interactions
     
     @objc fileprivate func signInButtonAction(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().uiDelegate = self
         
         GIDSignIn.sharedInstance().signIn()
     }
@@ -82,21 +83,22 @@ class ITLoginViewController: UIViewController {
         signInButton.layer.cornerRadius = 20.0
         signInButton.layer.masksToBounds = true
         
-        let logoutButton = UIButton()
-        logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
-        logoutButton.setTitle(NSLocalizedString("logout", comment: ""), for: .normal)
-        logoutButton.setTitleColor(UIColor.white, for: .normal)
-        logoutButton.setTitleColor(UIColor.gray, for: .highlighted)
-        logoutButton.addTarget(self, action: #selector(logoutButton(_ :)), for: .touchUpInside)
-        logoutButton.layer.cornerRadius = 20.0
-        logoutButton.layer.masksToBounds = true
+//        let logoutButton = UIButton()
+//        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+//        logoutButton.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+//        logoutButton.setTitle(NSLocalizedString("logout", comment: ""), for: .normal)
+//        logoutButton.setTitleColor(UIColor.white, for: .normal)
+//        logoutButton.setTitleColor(UIColor.gray, for: .highlighted)
+//        logoutButton.addTarget(self, action: #selector(logoutButton(_ :)), for: .touchUpInside)
+//        logoutButton.layer.cornerRadius = 20.0
+//        logoutButton.layer.masksToBounds = true
         
         view.addSubview(signInButton)
-        view.addSubview(logoutButton)
+        //view.addSubview(logoutButton)
 
         self.signInButton = signInButton
-       self.logoutButton = logoutButton
+       //self.logoutButton = logoutButton
+        
         setupConstraints()
     }
     
@@ -106,10 +108,10 @@ class ITLoginViewController: UIViewController {
         signInButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         
-        logoutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20.0).isActive = true
-        logoutButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
-        logoutButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
-        logoutButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+//        logoutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20.0).isActive = true
+//        logoutButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+//        logoutButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
+//        logoutButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
     }
 }
 
@@ -134,14 +136,8 @@ extension ITLoginViewController: GIDSignInUIDelegate {
                 return
             }
             
-            let homeVC = ITHomeViewController()
-            
-            //let navigationVC = UINavigationController(rootViewController: homeVC)
-            
-            self.navigationController?.pushViewController(homeVC, animated: true)
         }
     }
-    
     
 }
 

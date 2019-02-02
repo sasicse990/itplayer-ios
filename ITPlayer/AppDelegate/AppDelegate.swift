@@ -12,7 +12,9 @@ import Firebase
 import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
+
+    fileprivate var preferencesManager: PreferencesManagerProtocol = UserDefaultsManager.shared
 
     var window: UIWindow?
     
@@ -39,15 +41,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func setupViewControllers() {
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        //var intialVC: UIViewController?
+        var intialVC: UIViewController?
         
-//        if THSUserDataManager.shared.connectedUser != nil {
-          let  intialVC = ITLoginViewController()
-//        } else {
-//            intialVC = THSLoginViewController()
-//        }
+        if preferencesManager.isUserLogged  {
+           intialVC = ITHomeViewController()
+        } else {
+           intialVC = ITLoginViewController()
+        }
         
-        let navigationController = UINavigationController(rootViewController: intialVC)
+        let navigationController = UINavigationController(rootViewController: intialVC!)
         
         navigationController.setNavigationBarHidden(true, animated: false)
         
@@ -74,16 +76,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...
         if let error = error {
-            // ...
+            print(error)
             return
         }
-        
+
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         // ...
+        print(credential)
+        
+        self.preferencesManager.isUserLogged = true
+
+        setupViewControllers()
     }
-    
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...

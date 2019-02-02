@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840A6026220541A900D5A877 /* UITableView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A6025220541A900D5A877 /* UITableView+Additions.swift */; };
+		840A6028220541C200D5A877 /* UITableViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A6027220541C200D5A877 /* UITableViewCell+Additions.swift */; };
+		840A602A2205438C00D5A877 /* ITHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A60292205438C00D5A877 /* ITHomeTableViewCell.swift */; };
+		840A602C220543C700D5A877 /* UILable+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A602B220543C700D5A877 /* UILable+Additions.swift */; };
 		8428B1D12203EEC600A253FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1D02203EEC600A253FF /* AppDelegate.swift */; };
 		8428B1D32203EEC600A253FF /* ITLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1D22203EEC600A253FF /* ITLoginViewController.swift */; };
 		8428B1D92203EEC600A253FF /* ITPlayer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1D72203EEC600A253FF /* ITPlayer.xcdatamodeld */; };
@@ -14,12 +18,18 @@
 		8428B1DE2203EED700A253FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8428B1DC2203EED700A253FF /* LaunchScreen.storyboard */; };
 		8428B1EB2203FD7C00A253FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8428B1EA2203FD7C00A253FF /* GoogleService-Info.plist */; };
 		8428B1ED2204055700A253FF /* ITHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1EC2204055700A253FF /* ITHomeViewController.swift */; };
+		8428B1F222046BE700A253FF /* PreferencesManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1F122046BE700A253FF /* PreferencesManagerProtocol.swift */; };
+		8428B1F422046CA200A253FF /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428B1F322046CA200A253FF /* UserDefaultsManager.swift */; };
 		9075AAE97533FA04D1B34015 /* Pods_ITPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F2091B4276103172A42B87 /* Pods_ITPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		318C9A06F9145EDF1D835A62 /* Pods-ITPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITPlayer/Pods-ITPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		77F2091B4276103172A42B87 /* Pods_ITPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		840A6025220541A900D5A877 /* UITableView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
+		840A6027220541C200D5A877 /* UITableViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Additions.swift"; sourceTree = "<group>"; };
+		840A60292205438C00D5A877 /* ITHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITHomeTableViewCell.swift; sourceTree = "<group>"; };
+		840A602B220543C700D5A877 /* UILable+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Additions.swift"; sourceTree = "<group>"; };
 		8428B1CD2203EEC600A253FF /* ITPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8428B1D02203EEC600A253FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8428B1D22203EEC600A253FF /* ITLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITLoginViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +39,8 @@
 		8428B1DF2203EED800A253FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8428B1EA2203FD7C00A253FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8428B1EC2204055700A253FF /* ITHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITHomeViewController.swift; sourceTree = "<group>"; };
+		8428B1F122046BE700A253FF /* PreferencesManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManagerProtocol.swift; sourceTree = "<group>"; };
+		8428B1F322046CA200A253FF /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9E7D603BD4FB0F31AF7FDB3F /* Pods-ITPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITPlayer/Pods-ITPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +64,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		840A60232205417D00D5A877 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				840A60242205418700D5A877 /* UI */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		840A60242205418700D5A877 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				840A6025220541A900D5A877 /* UITableView+Additions.swift */,
+				840A6027220541C200D5A877 /* UITableViewCell+Additions.swift */,
+				840A602B220543C700D5A877 /* UILable+Additions.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		8428B1C42203EEC600A253FF = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +103,9 @@
 		8428B1CF2203EEC600A253FF /* ITPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				840A60232205417D00D5A877 /* Helpers */,
+				8428B1F122046BE700A253FF /* PreferencesManagerProtocol.swift */,
+				8428B1F322046CA200A253FF /* UserDefaultsManager.swift */,
 				8428B1E92203F33700A253FF /* Model */,
 				8428B1E62203F2E800A253FF /* Controller */,
 				8428B1E52203F2D600A253FF /* AppDelegate */,
@@ -129,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				8428B1EC2204055700A253FF /* ITHomeViewController.swift */,
+				840A60292205438C00D5A877 /* ITHomeTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -282,9 +316,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8428B1D92203EEC600A253FF /* ITPlayer.xcdatamodeld in Sources */,
+				8428B1F222046BE700A253FF /* PreferencesManagerProtocol.swift in Sources */,
+				840A6026220541A900D5A877 /* UITableView+Additions.swift in Sources */,
+				8428B1F422046CA200A253FF /* UserDefaultsManager.swift in Sources */,
+				840A602C220543C700D5A877 /* UILable+Additions.swift in Sources */,
 				8428B1D32203EEC600A253FF /* ITLoginViewController.swift in Sources */,
+				840A6028220541C200D5A877 /* UITableViewCell+Additions.swift in Sources */,
 				8428B1ED2204055700A253FF /* ITHomeViewController.swift in Sources */,
 				8428B1D12203EEC600A253FF /* AppDelegate.swift in Sources */,
+				840A602A2205438C00D5A877 /* ITHomeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R56ZAL6449;
 				INFOPLIST_FILE = ITPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,6 +486,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R56ZAL6449;
 				INFOPLIST_FILE = ITPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
