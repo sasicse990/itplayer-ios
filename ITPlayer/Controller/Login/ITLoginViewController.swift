@@ -16,8 +16,6 @@ class ITLoginViewController: UIViewController {
     
     fileprivate weak var signInButton: UIButton!
     
-    fileprivate weak var logoutButton: UIButton!
-
     // MARK: - Lifecycle
     
     // Custom initializers go here
@@ -47,15 +45,6 @@ class ITLoginViewController: UIViewController {
     @objc fileprivate func signInButtonAction(_ sender: UIButton) {
         
         GIDSignIn.sharedInstance().signIn()
-    }
-    
-    @objc fileprivate func logoutButton(_ sender: UIButton) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
     }
     
     // MARK: - Public methods

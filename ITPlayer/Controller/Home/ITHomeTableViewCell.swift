@@ -15,6 +15,13 @@ class ITHomeTableViewCell: UITableViewCell {
     fileprivate weak var titleLable: UILabel!
     
     fileprivate var hasSetupConstraints: Bool = false
+    
+    var videoList: Dictionary<String, Any?>? {
+        
+        didSet {
+            titleLable.text = videoList!["title"] as? String
+        }
+    }
 
     // MARK: - Lifecycle
     

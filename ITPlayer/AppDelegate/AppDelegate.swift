@@ -86,9 +86,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // ...
         print(credential)
         
-        self.preferencesManager.isUserLogged = true
-
-        setupViewControllers()
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            // User is signed in
+            // ...
+            self.preferencesManager.isUserLogged = true
+            
+            self.setupViewControllers()
+        }
+        
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

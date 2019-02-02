@@ -12,7 +12,7 @@ extension UITableView {
     
     class func ITTableView(backgroundColor: UIColor, delegate: Any?) -> UITableView {
         
-        let tableView = UITableView.init(frame: .zero, style: .grouped)
+        let tableView = UITableView.init(frame: .zero, style: .plain)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -31,16 +31,6 @@ extension UITableView {
         tableView.dataSource = delegate as? UITableViewDataSource
         
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        tableView.rowHeight = 60
-        
-        tableView.sectionHeaderHeight = UITableView.automaticDimension
-        
-        tableView.sectionFooterHeight = 0.01
-        
-        tableView.alwaysBounceVertical = false
-        
-        tableView.isScrollEnabled = false
         
         return tableView
     }

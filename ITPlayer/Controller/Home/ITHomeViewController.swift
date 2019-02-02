@@ -7,14 +7,18 @@
 //
 
 import UIKit
-
-import Alamofire
+import Firebase
 
 class ITHomeViewController: UIViewController {
 
     // MARK: - Properties
+    fileprivate var preferencesManager: PreferencesManagerProtocol = UserDefaultsManager.shared
 
     fileprivate weak var videoListTableView: UITableView!
+    
+    fileprivate weak var activityView: UIActivityIndicatorView!
+
+    fileprivate var tableViewDataArray = [Dictionary<String, Any>]()
 
     // MARK: - Lifecycle
     
@@ -27,7 +31,14 @@ class ITHomeViewController: UIViewController {
         
         setupViews()
         
-        fetchData()
+        fetchData {
+            DispatchQueue.main.async {
+                self.activityView.stopAnimating()
+
+                self.videoListTableView.reloadData()
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -37,37 +48,49 @@ class ITHomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         
         title = "Home"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutAction(_ :)))
     }
     
     // MARK: - User Interactions
+    
+    @objc fileprivate func logoutAction(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            preferencesManager.isUserLogged = false
+            preferencesManager.removeSavedData()
+            AppDelegate.sharedDelegate()?.setupViewControllers()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     
     // MARK: - Public methods
     
     // MARK: - Private methods
     
-    fileprivate func fetchData() {
-        guard let url = URL(string: "​https://interview-e18de.firebaseio.com/media.json?print=pretty​") else {
-            return
+    fileprivate func fetchData(compltionHandler: (() -> Void)? = nil) {
+        activityView.startAnimating()
+        if let url = URL(string: "https://interview-e18de.firebaseio.com/media.json?print=pretty") {
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let unwrappedData = data else { return }
+                do {
+                    let str = try JSONSerialization.jsonObject(with: unwrappedData, options: .allowFragments)
+                    self.tableViewDataArray = str as! [Dictionary<String, Any>]
+                    print(str)
+                    if let handler = compltionHandler {
+                        handler()
+                    }
+                } catch {
+                    if let handler = compltionHandler {
+                        handler()
+                    }
+                    print("json error: \(error)")
+                }
+            }
+            task.resume()
         }
-        
-        Alamofire.request(url,
-                          method: .get,
-                          parameters: nil)
-            .validate()
-            .responseJSON { response in
-                guard response.result.isSuccess else {
-                    print("Error")
-                        //completion(nil)
-                    return
-                }
-                
-                guard let value = response.result.value as? [String: Any],
-                    let rows = value["rows"] as? [[String: Any]] else {
-                        print("Malformed data received from fetchAllRooms service")
-                        return
-                }
-        
-    }
     }
     
     // MARK: - UI and Constraints methods
@@ -75,13 +98,19 @@ class ITHomeViewController: UIViewController {
     fileprivate func setupViews() {
         view.backgroundColor = .white
 
+        let activityView = UIActivityIndicatorView(style: .white)
+        activityView.color = UIColor.gray
+        activityView.center = view.center
+        
         let videoListTableView = UITableView.ITTableView(backgroundColor: UIColor.clear, delegate: self)
         videoListTableView.register(ITHomeTableViewCell.self, forCellReuseIdentifier: ITHomeTableViewCell.reuseIdentifier)
-        videoListTableView.sectionHeaderHeight = 0.1
+        videoListTableView.rowHeight = 50.0
 
         view.addSubview(videoListTableView)
-        
+        view.addSubview(activityView)
+
         self.videoListTableView = videoListTableView
+        self.activityView = activityView
 
         setupConstraints()
     }
@@ -101,15 +130,17 @@ extension ITHomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 5
+            return tableViewDataArray.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ITHomeTableViewCell.reuseIdentifier, for: indexPath) as? ITHomeTableViewCell
-            
-            return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: ITHomeTableViewCell.reuseIdentifier, for: indexPath) as? ITHomeTableViewCell
+        let dict = tableViewDataArray[indexPath.row]
         
+        cell?.videoList = dict
+        
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
