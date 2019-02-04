@@ -7,10 +7,6 @@ platform :ios, '11.0'
 
     inhibit_all_warnings!
 
-    pod 'IQKeyboardManagerSwift'
-
-    pod 'Alamofire', '~> 4.7'
-
     pod 'Firebase/Auth'
     
     pod 'GoogleSignIn'

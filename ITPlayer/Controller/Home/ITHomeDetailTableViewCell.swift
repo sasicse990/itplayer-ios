@@ -17,6 +17,8 @@ class ITHomeDetailTableViewCell: UITableViewCell {
     
     fileprivate weak var titleLable: UILabel!
     
+    fileprivate weak var playImageView: UIImageView!
+    
     fileprivate var hasSetupConstraints: Bool = false
     
     var videoList: ITVideos? {
@@ -34,6 +36,8 @@ class ITHomeDetailTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
         
         setupViews()
     }
@@ -56,14 +60,20 @@ class ITHomeDetailTableViewCell: UITableViewCell {
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         
+        let playImageView = UIImageView()
+        playImageView.translatesAutoresizingMaskIntoConstraints = false
+        playImageView.image = UIImage(named: "icnPlay")
+        
         let titleLbl = UILabel.defaultLabel(backgroundcolor: UIColor.clear, textColor: UIColor.black, textFont: UIFont.systemFont(ofSize: 16, weight: .medium))
         titleLbl.text = "Testing"
         
         contentView.addSubview(imageView)
+        imageView.addSubview(playImageView)
         contentView.addSubview(titleLbl)
         
-        self.titleLable = titleLbl
         self.videoImageView = imageView
+        self.playImageView = playImageView
+        self.titleLable = titleLbl
     }
     
     fileprivate func setupConstraints() {
@@ -73,6 +83,11 @@ class ITHomeDetailTableViewCell: UITableViewCell {
         videoImageView.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         videoImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20.0).isActive = true
         
+        playImageView.centerXAnchor.constraint(equalTo: videoImageView.centerXAnchor).isActive = true
+        playImageView.centerYAnchor.constraint(equalTo: videoImageView.centerYAnchor).isActive = true
+        playImageView.widthAnchor.constraint(equalToConstant: 24.0).isActive = true
+        playImageView.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+
         titleLable.topAnchor.constraint(equalTo: contentView.topAnchor , constant: 20.0).isActive = true
         titleLable.leftAnchor.constraint(equalTo: videoImageView.rightAnchor, constant: 20.0).isActive = true
         titleLable.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20.0).isActive = true

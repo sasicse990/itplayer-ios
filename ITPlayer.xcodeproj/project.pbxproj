@@ -13,7 +13,6 @@
 		840A602C220543C700D5A877 /* UILable+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A602B220543C700D5A877 /* UILable+Additions.swift */; };
 		840A602E220562D200D5A877 /* ITHomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A602D220562D200D5A877 /* ITHomeDetailViewController.swift */; };
 		840A6030220565A000D5A877 /* ITHomeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A602F220565A000D5A877 /* ITHomeDetailTableViewCell.swift */; };
-		840A603222058B5600D5A877 /* ITPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A603122058B5600D5A877 /* ITPlayerViewController.swift */; };
 		840A603C22059BA700D5A877 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A603A22059BA700D5A877 /* CoreDataStack.swift */; };
 		840A603D22059BA700D5A877 /* CoreDataStackConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A603B22059BA700D5A877 /* CoreDataStackConfiguration.swift */; };
 		840A603F2205A27F00D5A877 /* ITVideos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A603E2205A27F00D5A877 /* ITVideos+CoreDataProperties.swift */; };
@@ -40,7 +39,6 @@
 		840A602B220543C700D5A877 /* UILable+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable+Additions.swift"; sourceTree = "<group>"; };
 		840A602D220562D200D5A877 /* ITHomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITHomeDetailViewController.swift; sourceTree = "<group>"; };
 		840A602F220565A000D5A877 /* ITHomeDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITHomeDetailTableViewCell.swift; sourceTree = "<group>"; };
-		840A603122058B5600D5A877 /* ITPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITPlayerViewController.swift; sourceTree = "<group>"; };
 		840A603A22059BA700D5A877 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		840A603B22059BA700D5A877 /* CoreDataStackConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackConfiguration.swift; sourceTree = "<group>"; };
 		840A603E2205A27F00D5A877 /* ITVideos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ITVideos+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				840A60292205438C00D5A877 /* ITHomeTableViewCell.swift */,
 				840A602D220562D200D5A877 /* ITHomeDetailViewController.swift */,
 				840A602F220565A000D5A877 /* ITHomeDetailTableViewCell.swift */,
-				840A603122058B5600D5A877 /* ITPlayerViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -337,20 +334,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ITPlayer/Pods-ITPlayer-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,7 +370,6 @@
 				840A603D22059BA700D5A877 /* CoreDataStackConfiguration.swift in Sources */,
 				840A6028220541C200D5A877 /* UITableViewCell+Additions.swift in Sources */,
 				840A603F2205A27F00D5A877 /* ITVideos+CoreDataProperties.swift in Sources */,
-				840A603222058B5600D5A877 /* ITPlayerViewController.swift in Sources */,
 				8428B1ED2204055700A253FF /* ITHomeViewController.swift in Sources */,
 				8428B1D12203EEC600A253FF /* AppDelegate.swift in Sources */,
 				840A6030220565A000D5A877 /* ITHomeDetailTableViewCell.swift in Sources */,

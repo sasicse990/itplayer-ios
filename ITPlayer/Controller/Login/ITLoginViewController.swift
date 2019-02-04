@@ -25,12 +25,12 @@ class ITLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+
         setNeedsStatusBarAppearanceUpdate()
         
         setupViews()
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-
         // Do any additional setup after loading the view.
     }
     
@@ -38,6 +38,14 @@ class ITLoginViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        
+        navigationController?.navigationBar.barTintColor = UIColor.clear
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     // MARK: - User Interactions
@@ -72,21 +80,9 @@ class ITLoginViewController: UIViewController {
         signInButton.layer.cornerRadius = 20.0
         signInButton.layer.masksToBounds = true
         
-//        let logoutButton = UIButton()
-//        logoutButton.translatesAutoresizingMaskIntoConstraints = false
-//        logoutButton.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
-//        logoutButton.setTitle(NSLocalizedString("logout", comment: ""), for: .normal)
-//        logoutButton.setTitleColor(UIColor.white, for: .normal)
-//        logoutButton.setTitleColor(UIColor.gray, for: .highlighted)
-//        logoutButton.addTarget(self, action: #selector(logoutButton(_ :)), for: .touchUpInside)
-//        logoutButton.layer.cornerRadius = 20.0
-//        logoutButton.layer.masksToBounds = true
-        
         view.addSubview(signInButton)
-        //view.addSubview(logoutButton)
-
+        
         self.signInButton = signInButton
-       //self.logoutButton = logoutButton
         
         setupConstraints()
     }
@@ -96,11 +92,6 @@ class ITLoginViewController: UIViewController {
         signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         signInButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-        
-//        logoutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20.0).isActive = true
-//        logoutButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
-//        logoutButton.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
-//        logoutButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
     }
 }
 
@@ -121,7 +112,7 @@ extension ITLoginViewController: GIDSignInUIDelegate {
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
-                 print(error)
+                print(error)
                 return
             }
             
@@ -129,4 +120,5 @@ extension ITLoginViewController: GIDSignInUIDelegate {
     }
     
 }
+
 

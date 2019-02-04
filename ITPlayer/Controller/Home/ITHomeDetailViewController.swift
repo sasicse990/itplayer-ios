@@ -18,6 +18,8 @@ class ITHomeDetailViewController: UIViewController {
     
     fileprivate weak var activityView: UIActivityIndicatorView!
     
+    fileprivate var selectedIndex: Int = -1
+    
     var tableViewDataArray = [ITVideos]()
     
     // MARK: - Lifecycle
@@ -47,6 +49,35 @@ class ITHomeDetailViewController: UIViewController {
     // MARK: - Public methods
     
     // MARK: - Private methods
+    
+    fileprivate func addVideosInQueue() {
+        var queue: [AVPlayerItem] = []
+        
+        var count = 0
+        
+        var canAddVideos: Bool = false
+
+        for item in tableViewDataArray {
+            count += 1
+            
+            if selectedIndex == count - 1 || canAddVideos {
+                canAddVideos = true
+            if let videoUrl = item.videoUrl {
+                queue.append(AVPlayerItem(url: URL(string: videoUrl)!))
+            }
+            }
+        }
+        
+        let player = AVQueuePlayer(items: queue)
+        
+        let playerViewController = AVPlayerViewController()
+        
+        playerViewController.player = player
+        
+        self.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+    }
     
     // MARK: - UI and Constraints methods
     
@@ -110,62 +141,10 @@ extension ITHomeDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
         
-       // let dict = tableViewDataArray[indexPath.row]
-        
-        var queue: [AVPlayerItem] = []
-        
-        for item in tableViewDataArray {
-            if let videoUrl = item.videoUrl {
-                queue.append(AVPlayerItem(url: URL(string: videoUrl)!))
-            }
-        }
-
-        //if let videoUrl = dict.videoUrl {
-        //let videoURL = URL(string: videoUrl)
-        let player = AVQueuePlayer(items: queue)
-        let playerViewController = ITPlayerViewController()
-        playerViewController.player = player
-        playerViewController.delegate = self
-        self.present(playerViewController, animated: true) {
-            playerViewController.player!.play()
-        }
-       // }
+        addVideosInQueue()
     }
 }
 
-extension ITHomeDetailViewController: AVPlayerViewControllerDelegate {
-    
-    func playerViewControllerWillStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
-        
-    }
-    
-    func playerViewControllerDidStartPictureInPicture(_ playerViewController: AVPlayerViewController) {
-        
-    }
-    
-    func playerViewController(_ playerViewController: AVPlayerViewController, failedToStartPictureInPictureWithError error: Error) {
-        
-    }
-    
-    func playerViewControllerWillStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
-        
-    }
-    
-    func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
-        
-    }
-    
-    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(_ playerViewController: AVPlayerViewController) -> Bool {
-        return true
-    }
-    
-    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
-        
-    }
-    
-    func playerViewControllerDidEndDismissalTransition(_ playerViewController: AVPlayerViewController) {
-        print("dismissed")
-    }
-}
 
