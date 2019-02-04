@@ -49,22 +49,23 @@ class ITHomeViewController: UIViewController {
         
         title = "Home"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutAction(_ :)))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutAction(_ :)))
     }
     
     // MARK: - User Interactions
     
-    @objc fileprivate func logoutAction(_ sender: UIButton) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            preferencesManager.isUserLogged = false
-            preferencesManager.removeSavedData()
-            AppDelegate.sharedDelegate()?.setupViewControllers()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
+//    @objc fileprivate func logoutAction(_ sender: UIButton) {
+//
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//            preferencesManager.isUserLogged = false
+//            preferencesManager.removeSavedData()
+//            AppDelegate.sharedDelegate()?.setupViewControllers()
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
+//    }
     
     // MARK: - Public methods
     

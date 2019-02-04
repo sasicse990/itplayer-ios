@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             print(error)
             return
         }
-
+        
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
